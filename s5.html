@@ -8,9 +8,9 @@
 <!-- metadata -->
 <meta name="generator" content="S5" />
 <meta name="version" content="S5 1.1" />
-<meta name="presdate" content="20050728" />
-<meta name="author" content="Eric A. Meyer" />
-<meta name="company" content="Complex Spiral Consulting" />
+<meta name="presdate" content="20110511" />
+<meta name="author" content="Guido De Rosa" />
+<meta name="company" content="VEMAR s.a.s." />
 <!-- configuration parameters -->
 <meta name="defaultView" content="slideshow" />
 <meta name="controlVis" content="hidden" />
@@ -27,6 +27,12 @@
 <style type="text/css">
   .presentation .slide h2 em {
     font-style: normal;
+  }
+  em {
+    color: #226;
+  }
+  h1 em {
+    color: inherit;
   }
 </style>
 
@@ -54,14 +60,24 @@
 <h4><a href="http://dev.vemarsas.it/">VEMAR s.a.s.</a></h4>
 </div>
 
+<div class="slide">
+  <h1><em>Margay</em> is a complete system</h1>
+  <img src="img/3acrosser.png" style="float:right; height:15em;"/>
+  <ul>
+    <li>But you can get the web interface alone (a Sinatra application)</li>
+    <li><a href="http://github.com/gderosa/onboard">http://github.com/gderosa/onboard</a></li>
+    <li>And get it deployed on your own hardware...</li>
+    <li>...with some sysadmin work ;)</li>
+  </ul>
+</div>
 
 <div class="slide">
   <h1>Not-So-Embedded</h1>
-  <img src="img/3acrosser.png" style="float:right;"/>
+  <img src="img/3acrosser.png" style="float:right; height:15em;"/>
   <ul>
     <li>A standard x86 machine with GHz CPU and GiB RAM</li>
     <li>Being more powerful than a Ci$co SOHO device is easy, after all</li>
-    <li>Can run DansGuardian + ClamAV (content scanning would be heavy)</li>
+    <li>Can run DansGuardian + ClamAV (and afford content scanning)</li>
     <li>Can host a MySQL <em>server</em>, necessary for RADIUS AAA (something OpenWRT can not)</li>
     <li>Still relatively Low-Power</li>
   </ul>
@@ -73,7 +89,21 @@
   <ul>
     <li>Debian-based</li>
     <li>...but 99% independent upon distro-specific features</li>
+    <li>Porting to non-Linux Unices would be non-trivial anyhow (iproute2, iptables, ...)</li>
+    <li>LOTS of features (but this is not a commercial fair...)</li>
   </ul>
+</div>
+
+<div class="slide">
+  <h1>The commercial fair ;)</h1>
+  <div style="text-align:right;">
+    <img src="img/ospark.jpg" style="height:13em;"/>
+    <img src="img/cebit11_logo_de_col.jpg" style="height:13em;"/>
+    <img src="img/cebit-stand-h.jpeg" style="height:13em;"/>
+  </div>
+  <div>
+    <small><a href="http://www.h-online.com/open/features/Open-Source-at-CeBIT-2011-1206993.html?page=3">http://www.h-online.com/open/features/Open-Source-at-CeBIT-2011-1206993.html?page=3</a></small>
+  </div>
 </div>
 
 
