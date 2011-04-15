@@ -29,7 +29,7 @@
     font-style: normal;
   }
   em {
-    color: #226;
+    /* color: #226; */
   }
   h1 em {
     color: inherit;
@@ -37,7 +37,10 @@
   .part {
     text-align:center; 
     margin-top:4em;
-    font-size:130%;
+    font-size:140%;
+  }
+  pre {
+    text-align: left;
   }
 </style>
 
@@ -59,15 +62,24 @@
 <div class="presentation">
 
 <div class="slide">
-<h1>Managing Network Security Appliances with Ruby and Sinatra</h1>
-<h2>Introducing <em>MARGAY</em>, a RESTful firewall, VPN router, AAA server and Content Filter</h2>
-<h3>Guido De Rosa</h3>
-<h4><a href="http://dev.vemarsas.it/">VEMAR s.a.s.</a></h4>
+  <h1>Managing Network Security Appliances with Ruby and Sinatra</h1>
+  <h2>
+    Introducing <a href="http://www.margay.it/">MARGAY</a>, a 
+    RESTful firewall, VPN router, AAA server and Content Filter
+  </h2>
+
+  <a href="http://ruby-lang.org/"><img src="img/ruby_logo.png" style="height:5em; float:right;"/></a>    
+  <h3>Guido De Rosa</h3>
+
+  <h4>
+    <a href="http://dev.vemarsas.it/">VEMAR s.a.s.</a>
+  </h4>
+  <a href="http://dev.vemarsas.it/"><img src="img/vemar-logo.jpg" style="height:2em;"/></a>
 </div>
 
 <div class="slide">
   <h1><em>Margay</em> is a complete system</h1>
-  <img src="img/3acrosser.png" style="float:right; height:15em;"/>
+  <img src="img/3acrosser.png" style="float:right; height:13em;"/>
   <ul>
     <li>But you can get the web interface alone (a Sinatra application)</li>
     <li><a href="http://github.com/gderosa/onboard">http://github.com/gderosa/onboard</a></li>
@@ -78,7 +90,7 @@
 
 <div class="slide">
   <h1>Not-So-Embedded</h1>
-  <img src="img/3acrosser.png" style="float:right; height:15em;"/>
+  <img src="img/3acrosser.png" style="float:right; height:13em;"/>
   <ul>
     <li>A standard x86 machine with GHz CPU and GiB RAM</li>
     <li>Being more powerful than a Ci$co SOHO device is easy, after all</li>
@@ -94,7 +106,7 @@
   <ul>
     <li>Debian-based</li>
     <li>...but 99% independent upon distro-specific features</li>
-    <li>Porting to non-Linux Unices would be non-trivial anyhow (iproute2, iptables, ...)</li>
+    <li>Porting to non-Linux Unices would be non-trivial instead (iproute2, iptables, ...)</li>
     <li>LOTS of features (but this is not a commercial fair...)</li>
   </ul>
 </div>
@@ -102,9 +114,9 @@
 <div class="slide">
   <h1>The commercial fair ;)</h1>
   <div style="text-align:right;">
-    <img src="img/ospark.jpg" style="height:13em;"/>
-    <img src="img/cebit11_logo_de_col.jpg" style="height:13em;"/>
-    <img src="img/cebit-stand-h.jpeg" style="height:13em;"/>
+    <img src="img/ospark.jpg" style="height:11em;"/>
+    <img src="img/cebit11_logo_de_col.jpg" style="height:11em;"/>
+    <img src="img/cebit-stand-h.jpeg" style="height:11em;"/>
   </div>
   <div>
     <small><a href="http://www.h-online.com/open/features/Open-Source-at-CeBIT-2011-1206993.html?page=3">http://www.h-online.com/open/features/Open-Source-at-CeBIT-2011-1206993.html?page=3</a></small>
@@ -112,8 +124,61 @@
 </div>
 
 <div class="slide">
-  <div class="part">__centered</div>
+  <div class="part">
+<pre>class OnBoard
+  class Controller &lt; Sinatra::Base </pre>
+  <img src="img/sinatra_logo.gif"/>
+  </div>
 </div>
+
+<div class="slide">
+  <h1>Why Sinatra?</h1>
+  <ul>
+    <li>Lightweight (duh!)</li>
+    <li>RESTful in a natural way</li>
+    <li>Why RESTful?</li>
+    <li>Poor-man SNMP&hellip; ?</li>
+    <li>Each (human-readable) HTML page also provides JSON and YAML</li>
+    <li>Error messages are HTTP statuses (even in the UI)</li>
+    <li>Sound URLs: <code>/network/interfaces/eth0.html</code></li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>RESTful Top-bar</h1>
+  <img src="img/screen/restful-vpn.png" style="width:100%;"/>
+</div>
+
+<div class="slide">
+  <h1 style="text-transform: none;">/network/openvpn.json</h1>
+<pre>        },
+        "subject": {
+          "C": "IT",
+          "ST": "NA",
+          "L": "Napoli",
+          "O": "Vemar sas",
+          "CN": "napoli.vpn.vemarsas.it",
+          "emailAddress": "guido.derosa@vemarsas.it"
+        },
+        "not_before": "2011-04-11 16:39:44 UTC",
+        "not_after": "2021-04-08 16:39:44 UTC"
+      },
+      "dev-type": "tun",
+      "dev": "ovpn_tun1",
+      "client": {
+        "Virtual Address": "10.179.239.10",
+        "Bytes Received": "2000468",
+        "Bytes Sent": "1893847",
+        "Connected Since": "2011-04-11 17:47:39 +0000"
+      },
+      "remote": [
+        {
+          "address": "78.7.85.162",
+          "port": "1194",
+          "proto": "udp"
+        }</pre>  
+</div>
+
 
 </div>
 
