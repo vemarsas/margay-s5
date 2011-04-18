@@ -179,6 +179,45 @@
         }</pre>  
 </div>
 
+<div class="slide">
+  <h1 style="text-transform: none;">/network/openvpn.yaml</h1>
+<pre>    subject: 
+      C: IT
+      ST: NA
+      L: Napoli
+      O: Vemar sas
+      CN: napoli.vpn.vemarsas.it
+      emailAddress: guido.derosa@vemarsas.it
+    not_before: 2011-04-11 16:39:44 Z
+    not_after: 2021-04-08 16:39:44 Z
+  dev-type: tun
+  dev: ovpn_tun1
+  client: 
+    Virtual Address: 10.179.239.10
+    Bytes Received: "2367820"
+    Bytes Sent: "2241883"
+    Connected Since: 2011-04-11 17:47:39 +00:00
+  remote: 
+  - address: 78.7.85.162
+    port: "1194"
+    proto: udp
+  comp-lzo: ""
+  virtual_address: 10.179.239.10</pre>  
+</div>
+
+<div class="slide">
+  <h1>MVC</h1>
+  <ul>
+    <li>Although Sinatra doesn't force you...</li>
+    <li><code>OnBoard::Controller &lt; Sinatra :: Base</code></li>
+    <li><code>controller/network/interfaces.rb</code> (routes)</li>
+    <li>Remaining <code>OnBoard</code> namespace: the &ldquo;Model&rdquo; (sort of)</li>
+    <li>The database is the OS configuration (<code>/sys</code>, <code>/proc</code>, command output, config files)</li>
+    <li><code>lib/onboard/network/interface.rb</code> (backend logic)</li>
+    <li><code>views/network/interfaces.html.erubis</code> (templates)</li>
+  </ul>
+</div>
+
 
 </div>
 
