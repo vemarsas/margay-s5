@@ -218,6 +218,29 @@
   </ul>
 </div>
 
+<div class="slide">
+  <h1>Ancillary gem #1: Hierarchical Menu</h1>
+  <ul>
+    <li>Very simple JS + CSS + Plain Ruby</li>
+    <li><pre>root.add_path('/aaa/bbb/ccc/ddd', {
+    :name => 'test1',
+    :href => '/xxx/yyy/zzz.html',
+    :custom_info => SomeStuff
+  })</pre></li>
+  <li><pre>root.to_html_ul do |node, output| 
+    if node.content[:custom_info].some_check
+      output[:extra_class] = 'hmenu-selected' # Expand
+      output[:href] = nil                     # No hyperref
+    end
+  end</pre></li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Ancillary gem #1: Hierarchical Menu</h1>
+  <img src="img/screen/hmenu-onboard.png" style="height:15em;"/>
+</div>
+
 
 </div>
 
