@@ -225,13 +225,13 @@
 </div>
 
 <div class="slide">
-  <h1>Ancillary gem #1: hierarchical_menu</h1>
+  <h1>Ancillary gem: <em>hierarchical_menu</em></h1>
   <ul>
     <li>Very simple JS + CSS + Plain Ruby</li>
     <li><pre>root.add_path('/aaa/bbb/ccc/ddd', {
-    :name => 'test1',
-    :href => '/xxx/yyy/zzz.html',
-    :custom_info => SomeStuff
+    :name =&gt; 'test1',
+    :href =&gt; '/xxx/yyy/zzz.html',
+    :custom_info =&gt; SomeStuff
   })</pre></li>
   <li><pre>root.to_html_ul do |node, output| 
     if node.content[:custom_info].some_check
@@ -243,7 +243,7 @@
 </div>
 
 <div class="slide">
-  <h1>Ancillary gem #1: hierarchical_menu</h1>
+  <h1><em>hierarchical_menu</em></h1>
   <img src="img/screen/hmenu-onboard.png" style="height:15em;"/>
 </div>
 
@@ -319,12 +319,17 @@
     <li><code>modules/radius-admin</code></li>
     <li><code>modules/radius-core</code></li>
   </ul>
+  <ul>
+    <li><em>hotspotlogin</em> gem</li>
+  </ul>
+
 </div>
 
 <div class="slide">
   <h1>Web Content Filter</h1>
   <ul>
     <li><code>modules/dansguardian</code></li>
+    <li>Gems: <em>dansguardian</em> and <em>configfiles</em></li>
   </ul>
 </div>
 
