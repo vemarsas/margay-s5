@@ -45,6 +45,9 @@
   a img {
     border: 0;
   }
+  div.slide h1 {
+    text-transform: none;
+  }
 </style>
 
 </head>
@@ -222,7 +225,7 @@
 </div>
 
 <div class="slide">
-  <h1>Ancillary gem #1: Hierarchical Menu</h1>
+  <h1>Ancillary gem #1: hierarchical_menu</h1>
   <ul>
     <li>Very simple JS + CSS + Plain Ruby</li>
     <li><pre>root.add_path('/aaa/bbb/ccc/ddd', {
@@ -240,7 +243,7 @@
 </div>
 
 <div class="slide">
-  <h1>Ancillary gem #1: Hierarchical Menu</h1>
+  <h1>Ancillary gem #1: hierarchical_menu</h1>
   <img src="img/screen/hmenu-onboard.png" style="height:15em;"/>
 </div>
 
@@ -249,10 +252,52 @@
 </div>
 
 <div class="slide">
+  <h1 style="text-transform:none;">Netfilter (aka <code style="color:inherit;">iptables</code>)</h1>
   <a href="img/screen/firewall.png" target="_blank"><img src="img/screen/firewall.png" style="height:15em;"/></a>
 </div>
 
+<div class="slide">
+  <h1>IPv6</h1>
+  <a href="img/screen/interfaces+ipv6.png" target="_blank"><img src="img/screen/interfaces+ipv6.png" style="width:35em;"/></a>
+</div>
 
+<div class="slide">
+  <h1>Bridging</h1>
+  <a href="img/screen/bridge.png" target="_blank"><img src="img/screen/bridge.png" style="height:15em;"/></a>
+</div>
+
+<div class="slide">
+  <h1>Policy Routing</h1>
+  <ul>
+    <li>Route traffic according to its...</li>
+    <li>...source</li>
+    <li>...incoming network interface</li>
+    <li>...incoming physical port (within a bridge)</li>
+    <li>...QoS classification (DSCP)</li> 
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Policy Routing</h1>
+  <ul>
+    <li>Full power of <code>ip rule</code> + <code>iptables -t mangle -j MARK</code></li>
+    <li>...but this is not a Linux Day. Sorry :-)</li>
+    <li>As a sidenote: there <em>is</em> a standard Unix way to listen on a TCP socket...</li>
+    <li>...but no portable way to assign IP addresses, IP routes, IP filters...</li>
+    <li>The rude and simple way: <code>system()</code></li>
+    <li>The sophisticated way: RTNETLINK (not my choice, though)</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Policy Routing</h1>
+   <a href="img/screen/policy-routing-tables.png" target="_blank"><img src="img/screen/policy-routing-tables.png" style=""/></a>
+</div>
+
+<div class="slide">
+  <h1>Policy Routing</h1>
+   <a href="img/screen/policy-routing-rules.png" target="_blank"><img src="img/screen/policy-routing-rules.png" style=""/></a>
+</div>
 
 </div>
 
