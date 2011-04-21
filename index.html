@@ -48,6 +48,10 @@
   div.slide h1 {
     text-transform: none;
   }
+  .slide ul li ul li {
+    font-size:100%;
+    margin-top: 0.75em;
+  }
 </style>
 
 </head>
@@ -225,7 +229,7 @@
 </div>
 
 <div class="slide">
-  <h1>Ancillary gem: <em>hierarchical_menu</em></h1>
+  <h1>Ancillary gem #1: <em>hierarchical_menu</em></h1>
   <ul>
     <li>Very simple JS + CSS + Plain Ruby</li>
     <li><pre>root.add_path('/aaa/bbb/ccc/ddd', {
@@ -245,6 +249,7 @@
 <div class="slide">
   <h1><em>hierarchical_menu</em></h1>
   <img src="img/screen/hmenu-onboard.png" style="height:15em;"/>
+  <a href="http://rubygems.org/gems/hierarchical_menu">http://rubygems.org/gems/hierarchical_menu</a>
 </div>
 
 <div class="slide">
@@ -318,22 +323,48 @@
     <li><code>modules/hotspotlogin</code></li>
     <li><code>modules/radius-admin</code></li>
     <li><code>modules/radius-core</code></li>
-  </ul>
-  <ul>
     <li><em>hotspotlogin</em> gem</li>
   </ul>
+</div>
 
+<div class="slide">
+  <h1>Ancillary gem #2: <em>HotSpotLogin.rb</em></h1>
+  <img src="img/screen/hotspot_logged_in.jpg" style="float:right; height:15em;"/>
+  <ul>
+    <li>Sinatra-based (again ;-)</li>
+    <li>JS: queries the CoovaChilli JSON interface</li>
+    <li><a href="http://rubygems.org/gems/hotspotlogin">http://rubygems.org/gems/hotspotlogin</a>
 </div>
 
 <div class="slide">
   <h1>Web Content Filter</h1>
   <ul>
     <li><code>modules/dansguardian</code></li>
-    <li>Gems: <em>dansguardian</em> and <em>configfiles</em></li>
+    <li>
+      Ancillary gem #3, #4: <em>dansguardian</em> and <em>configfiles</em>
+      <ul>
+        <li>a good idea?</li>
+      </ul>
+    </li>
   </ul>
 </div>
 
+<div class="slide">
+  <h1>Integrating Captive Portal and Web Filtering</h1>
+  <h2>The <em>SQLAuth</em> DansGuardian plugin</h2>
+  <a href="http://github.com/gderosa/dansguardian">http://github.com/gderosa/dansguardian</a></li>
 
+  <div style="float:right;">
+    <img src="img/freeradius.png"/><br/>
+    <img src="img/dg.jpg"/>
+  </div>
+  <ul>
+    <li>Non-trivial (as the IP plugin)</li>
+    <li>OS/network architecture independent (compared to NTLM)</li>
+    <li>Compatible with <em>transparent</em> proxies (no Proxy-based Auth)</li>
+    <li>Hack into the C++ DG source: the <em>SQLAuth</em> plugin</li>
+    <li>Queries the RADIUS db via SOCI C++ library</li>
+  </ul>
 </div>
 
 </body>
