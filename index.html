@@ -285,7 +285,7 @@
 <div class="slide">
   <h1>Policy Routing</h1>
   <ul>
-    <li>Full power of <code>ip rule</code> + <code>iptables -t mangle -j MARK</code></li>
+    <li>Full power of <code>ip rule</code> and <code>iptables -t mangle</code></li>
     <li>...but this is not a Linux Day. Sorry :-)</li>
     <li>As a sidenote: there <em>is</em> a standard Unix way to listen on a TCP socket...</li>
     <li>...but no portable way to assign IP addresses, IP routes, IP filters...</li>
@@ -310,6 +310,7 @@
 
 <div class="slide">
   <h1>SSL and VPN</h1>
+  <img src="img/ovpn.howtoforge.jpg" style="float:right;"/>
   <ul>
     <li><code>modules/easy-rsa</code></li>
     <li><code>modules/openvpn</code>
@@ -318,6 +319,11 @@
 
 <div class="slide">
   <h1>Captive portal, AAA</h1>
+  <div style="float:right;">
+    <img src="img/coova-logo.png"/><br/>
+    <img src="img/RADIUSAcct.preview.jpg"/><br/>
+    <img src="img/Chilli_2.preview.jpg"/><br/>
+  </div>
   <ul>
     <li><code>modules/chilli</code></li>
     <li><code>modules/hotspotlogin</code></li>
@@ -338,6 +344,7 @@
 
 <div class="slide">
   <h1>Web Content Filter</h1>
+  <img src="img/screen/dansguardian-filtergroup.png" style="float:right;"/>
   <ul>
     <li><code>modules/dansguardian</code></li>
     <li>
@@ -354,10 +361,10 @@
   <h2>The <em>SQLAuth</em> DansGuardian plugin</h2>
   <a href="http://github.com/gderosa/dansguardian">http://github.com/gderosa/dansguardian</a></li>
 
-  <div style="float:right;">
-    <img src="img/freeradius.png"/><br/>
-    <img src="img/dg.jpg"/>
-    <div style="margin-top:0;"><span style="font-size:20px;">DansGuardian</span></div>
+  <div style="float:right; line-height:0.4em;">
+    <img src="img/freeradius.png" style="margin-bottom:1ex;"/><br/>
+    <img src="img/dg.jpg" style="margin-bottom:0;"/>
+    <div style="margin-top:0; margin-bottom:1em;"><span style="font-size:24px;">DansGuardian</span></div>
   </div>
   <ul>
     <li>Non-trivial (as the IP plugin)</li>
