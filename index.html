@@ -31,7 +31,7 @@
   em {
     /* color: #226; */
   }
-  h1 em {
+  h1 em, .slide h1 code {
     color: inherit;
   }
   .part {
@@ -117,7 +117,9 @@
     <li>Debian-based</li>
     <li>...but 99% independent upon distro-specific features</li>
     <li>Porting to non-Linux Unices would be non-trivial instead (iproute2, iptables, ...)</li>
-    <li>LOTS of features (but this is not a commercial fair...)</li>
+    <li><code>~/.onboard/etc/config</code>(instead of <code>/etc</code>)</li>
+    <li>Starts / stops / restores services on its own...</li>
+    <li>...but un-managed services still handled by distro init scripts</li>
   </ul>
 </div>
 
@@ -286,7 +288,6 @@
   <h1>Policy Routing</h1>
   <ul>
     <li>Full power of <code>ip rule</code> and <code>iptables -t mangle</code></li>
-    <li>...but this is not a Linux Day. Sorry :-)</li>
     <li>As a sidenote: there <em>is</em> a standard Unix way to listen on a TCP socket...</li>
     <li>...but no portable way to assign IP addresses, IP routes, IP filters...</li>
     <li>The rude and simple way: <code>system()</code></li>
@@ -315,6 +316,11 @@
     <li><code>modules/easy-rsa</code></li>
     <li><code>modules/openvpn</code>
   </ul>
+</div>
+
+<div class="slide">
+  <h1>SSL and VPN</h1>
+  <img src="img/screen/ovpn-details.png"/>
 </div>
 
 <div class="slide">
@@ -372,6 +378,231 @@
     <li>C++ development on top of the SOCI library</li>
   </ul>
 </div>
+
+<div class="slide">
+  <div class="part">
+    <em>Anatomy of a module (or how to create your own)</em>
+  </div>
+</div>
+
+<div class="slide">
+  <h1>Plugin Anatomy</h1>
+  <ul>
+    <li>Same directory layout of core</li>
+    <li><code>Sinatra::Base</code> has been opened to allow multiple paths for static files and views</li>
+    <li>Installing and uninstalling is just a matter of copying or deleting a directory</li>
+    <li>Current example: <code>modules/chilli/</code></li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1><code>load.rb</code></h1>  
+  <pre>
+class OnBoard
+  module Network
+    module AccessControl
+      class Chilli
+        ROOTDIR = File.dirname(__FILE__)
+        CONFDIR = 
+            "#{OnBoard::CONFDIR}/network/access-control/chilli"
+        $LOAD_PATH.unshift  ROOTDIR + '/lib'
+        if OnBoard.web?
+          OnBoard.find_n_load ROOTDIR + '/etc/menu'
+          OnBoard.find_n_load ROOTDIR + '/controller'
+        end
+      end
+    end
+  end
+  CHILLI_CLASS = Network::AccessControl::Chilli # a shortcut
+end
+  </pre>
+</div>
+
+
+
+<div class="slide">
+  <h1>Menu</h1>
+  <h2><code>etc/menu/network/access-control/chilli.rb</code></h2>
+  <pre>
+
+class OnBoard
+  MENU_ROOT.add_path('/network/access-control/chilli', {
+    :href     =&gt; '/network/access-control/chilli',
+    :name     =&gt; '&ldquo;Chilli&rdquo; Controller',
+    :desc     =&gt; 'Redirects unauthenticated users to a login page',
+    :n        =&gt; 0,
+    :children =&gt; %r{^/network/access-control/chilli/.*}
+  })
+end
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Sinatra routes</h1>
+  <h2><code>controller/network/access-control/chilli.rb</code></h2>
+  <pre>
+    put '/network/access-control/chilli/:ifname.:format' do
+...
+            else
+              raise CHILLI_CLASS::BadRequest, "UAM passwords do not match!"
+            end
+          else
+            raise CHILLI_CLASS::BadRequest, "Wrong UAM password!" unless
+                params['conf']['uamsecret'].length == 0 and
+...
+        rescue CHILLI_CLASS::BadRequest
+          status 400
+          msg[:err] = $!
+          msg[:ok] = false
+        end
+
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>The <code>format</code> helper</h1>
+  <h2><code>controller/network/access-control/chilli.rb</code></h2>
+  <pre>
+    put '/network/access-control/chilli/:ifname.:format' do
+...
+        # refresh
+        all = CHILLI_CLASS.getAll()
+        chilli = all.detect{|x| x.conf['dhcpif'] == params[:ifname]}
+
+        format(
+          :module   =&gt; 'chilli',
+          :path     =&gt; '/network/access-control/chilli/ifconfig',
+          :format   =&gt; params[:format],
+          :objects  =&gt; chilli,
+          :msg      =&gt; msg
+        )
+      else
+        not_found
+      end
+  </pre>
+</div>
+
+
+<div class="slide">
+  <h1>Stuff under <code>lib/</code> ...</h1>
+  <h2><code>lib/network/access-control/chilli.rb</code></h2>
+  <pre>
+require 'onboard/extensions/ipaddr'
+require 'onboard/system/process'
+require 'onboard/network/interface'
+require 'onboard/network/interface/ip'
+
+class OnBoard
+  module Network
+    module AccessControl
+      class Chilli
+...
+        class BadRequest &lt; RuntimeError; end
+...
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Stuff under <code>lib/</code> ...</h1>
+  <h2><code>lib/network/access-control/chilli.rb</code></h2>
+  <pre>
+...
+      class Chilli
+...
+        def self.parse_conffile(filename)
+          h = {}
+          return h unless File.exists? filename
+          File.foreach(filename) do |line|
+            line.sub! /#.*$/, ''
+            if line =~ /(\S+)\s+(.*)\s*$/
+              opt, arg = $1, $2
+...
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Stuff under <code>lib/</code> ...</h1>
+  <h2><code>lib/network/access-control/chilli.rb</code></h2>
+  <pre>
+...
+      class Chilli
+...
+        def self.parse_conffile(filename)
+...
+        def self.create_from_HTTP_request(params)
+...
+        def self.validate_conffile(h) # based on chilli_opt(1)
+...
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>Save and Restore</h1>
+  <h2><code>lib/network/access-control/chilli.rb</code></h2>
+  <pre>
+      class Chilli
+        def self.save
+          FileUtils.mkdir_p File.dirname SAVED_DAT_FILE
+          all = getAll
+          File.open SAVED_DAT_FILE, 'w' do |f|
+            f.write Marshal.dump(getAll)
+          end
+        end
+
+        def self.restore
+          if File.exists? SAVED_DAT_FILE
+            all_saved = Marshal.load File.read SAVED_DAT_FILE
+            all_saved.map{|chilli| chilli.start if chilli.running?}
+          end
+        end
+...
+  </pre>
+</div>
+
+<div class="slide">
+  <h1>SysV-like init hooks</h1>
+  <h2><code>etc/restore/60chilli.rb</code></h2>
+  <pre>
+require 'onboard/network/access-control/chilli'
+OnBoard::Network::AccessControl::Chilli.restore
+
+</pre>
+  <h2><code>etc/save/chilli.rb</code></h2>
+  <pre>
+require 'onboard/network/access-control/chilli'
+OnBoard::Network::AccessControl::Chilli.save
+
+</pre>
+</div>
+
+<div class="slide">
+  <h1>Want to develop?</h1>
+  <ul>
+    <li>Ok, you deserve better docs ;-)</li>
+    <li>
+      Most wanted plugins:
+      <ul>
+        <li>IPSec vpn (talk to Cisco devices and mobile clients)</li>
+        <li>Intrusion detection (Snort)</li>
+        <li>VLAN</li>
+        <li>PPPoE, PPPoA</li>
+      </ul>
+    </li>
+    <li>GPL</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Fork me on GitHub</h1>
+  <ul>
+    <li><a href="http://github.com/gderosa/onboard">http://github.com/gderosa/onboard</a> (and other projects)</li>
+    <li><a href="http://dev.vemarsas.it/projects/onboard/wiki">http://dev.vemarsas.it/projects/onboard/wiki</a> (and other projects)</li>
+    <li><a href="http://www.margay.it/s5/">http://www.margay.it/s5/</a> (this presentation)</li>
+    <li>guido.derosa <em>at</em> vemarsas.it</li>
+    <li>Thanks a lot!</li>
+  </div>
+</div>
+
 
 </body>
 </html>
