@@ -25,7 +25,7 @@
 
 <!-- Custom style -->
 <style type="text/css">
-  .presentation .slide h2 em {
+  #slide0 h2 em {
     font-style: normal;
   }
   em {
@@ -71,10 +71,10 @@
 
 <div class="presentation">
 
-<div class="slide">
+<div class="slide" id="slide0">
   <h1>Managing Network Security Appliances with Ruby and Sinatra</h1>
   <h2>
-    Introducing <a href="http://www.margay.it/">MARGAY</a>, a 
+    Introducing <em><a href="http://www.margay.it/">MARGAY</a></em>, a 
     RESTful firewall, VPN router, AAA server and Content Filter
   </h2>
 
@@ -360,7 +360,6 @@
   <h1>Integrating Captive Portal and Web Filtering</h1>
   <h2>The <em>SQLAuth</em> DansGuardian plugin</h2>
   <a href="http://github.com/gderosa/dansguardian">http://github.com/gderosa/dansguardian</a></li>
-
   <div style="float:right; line-height:0.4em;">
     <img src="img/freeradius.png" style="margin-bottom:1ex;"/><br/>
     <img src="img/dg.jpg" style="margin-bottom:0;"/>
@@ -370,8 +369,7 @@
     <li>Non-trivial (as the IP plugin)</li>
     <li>OS/network architecture independent (compared to NTLM)</li>
     <li>Compatible with <em>transparent</em> proxies (no Proxy-based Auth)</li>
-    <li>Hack into the C++ DG source: the <em>SQLAuth</em> plugin</li>
-    <li>Queries the RADIUS db via SOCI C++ library</li>
+    <li>C++ development on top of the SOCI library</li>
   </ul>
 </div>
 
