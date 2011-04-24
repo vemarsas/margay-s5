@@ -432,12 +432,12 @@
     <li>Same directory layout of core</li>
     <li><code>Sinatra::Base</code> has been opened to allow multiple paths for static files and views</li>
     <li>Installing and uninstalling is just a matter of copying or deleting a directory</li>
-    <li>Current example: <code>modules/chilli/</code></li>
+    <li>Current example: the ChilliSpot module</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1><code>load.rb</code></h1>  
+  <h1><code><span style="color:#888">modules/chilli/</span>load.rb</code></h1>  
   <pre>
 class OnBoard
   module Network
@@ -463,7 +463,7 @@ end
 
 <div class="slide">
   <h1>Menu</h1>
-  <h2><code>etc/menu/network/access-control/chilli.rb</code></h2>
+  <h2><code>modules/chilli/<br/>etc/menu/network/access-control/chilli.rb</code></h2>
   <pre>
 
 class OnBoard
@@ -480,7 +480,7 @@ end
 
 <div class="slide">
   <h1>Sinatra routes</h1>
-  <h2><code>controller/network/access-control/chilli.rb</code></h2>
+  <h2><code>modules/chilli/<br/>controller/network/access-control/chilli.rb</code></h2>
   <pre>
     put '/network/access-control/chilli/:ifname.:format' do
 ...
@@ -502,7 +502,7 @@ end
 
 <div class="slide">
   <h1>The <code>format</code> helper</h1>
-  <h2><code>controller/network/access-control/chilli.rb</code></h2>
+  <h2><code>modules/chilli/<br/>controller/network/access-control/chilli.rb</code></h2>
   <pre>
     put '/network/access-control/chilli/:ifname.:format' do
 ...
@@ -526,7 +526,7 @@ end
 
 <div class="slide">
   <h1>Stuff under <code>lib/</code> ...</h1>
-  <h2><code>lib/network/access-control/chilli.rb</code></h2>
+  <h2><code>modules/chilli/<br/>lib/network/access-control/chilli.rb</code></h2>
   <pre>
 require 'onboard/extensions/ipaddr'
 require 'onboard/system/process'
@@ -545,7 +545,7 @@ class OnBoard
 
 <div class="slide">
   <h1>Stuff under <code>lib/</code> ...</h1>
-  <h2><code>lib/network/access-control/chilli.rb</code></h2>
+  <h2><code>modules/chilli/<br/>lib/network/access-control/chilli.rb</code></h2>
   <pre>
 ...
       class Chilli
@@ -563,7 +563,7 @@ class OnBoard
 
 <div class="slide">
   <h1>Stuff under <code>lib/</code> ...</h1>
-  <h2><code>lib/network/access-control/chilli.rb</code></h2>
+  <h2><code>modules/chilli/<br/>lib/network/access-control/chilli.rb</code></h2>
   <pre>
 ...
       class Chilli
@@ -579,7 +579,7 @@ class OnBoard
 
 <div class="slide">
   <h1>Stuff under <code>lib/</code> ...</h1>
-  <h2><code>lib/network/access-control/chilli.rb</code></h2>
+  <h2><code>modules/chilli/<br/>lib/network/access-control/chilli.rb</code></h2>
   <pre>
         def initialize(h)
           if h[:process]
@@ -607,7 +607,7 @@ class OnBoard
 
 <div class="slide">
   <h1>Save and Restore</h1>
-  <h2><code>lib/network/access-control/chilli.rb</code></h2>
+  <h2><code>modules/chilli/<br/>lib/network/access-control/chilli.rb</code></h2>
   <pre>
       class Chilli
         def self.save
@@ -630,13 +630,13 @@ class OnBoard
 
 <div class="slide">
   <h1>SysV-like init hooks</h1>
-  <h2><code>etc/restore/60chilli.rb</code></h2>
+  <h2><code>modules/chilli/<br/>etc/restore/60chilli.rb</code></h2>
   <pre>
 require 'onboard/network/access-control/chilli'
 OnBoard::Network::AccessControl::Chilli.restore
 
 </pre>
-  <h2><code>etc/save/chilli.rb</code></h2>
+  <h2><code>modules/chilli/<br/>etc/save/chilli.rb</code></h2>
   <pre>
 require 'onboard/network/access-control/chilli'
 OnBoard::Network::AccessControl::Chilli.save
