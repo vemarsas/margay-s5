@@ -160,7 +160,7 @@
     <li>RESTful in a natural way</li>
     <li>Why RESTful?</li>
     <li>Poor-man SNMP&hellip; ?</li>
-    <li>Each (human-readable) HTML page also provides JSON and YAML</li>
+    <li>Each (human-readable) HTML page also provides JSON (and Ruby objects, in development)</li>
     <li>Error messages are HTTP statuses (even in the UI)</li>
     <li>Sound URLs: <code>/network/interfaces/eth0.html</code></li>
   </ul>
@@ -199,32 +199,6 @@
           "port": "1194",
           "proto": "udp"
         }</pre>  
-</div>
-
-<div class="slide">
-  <h1 style="text-transform: none;">/network/openvpn.yaml</h1>
-<pre>    subject: 
-      C: IT
-      ST: NA
-      L: Napoli
-      O: Vemar sas
-      CN: napoli.vpn.vemarsas.it
-      emailAddress: guido.derosa@vemarsas.it
-    not_before: 2011-04-11 16:39:44 Z
-    not_after: 2021-04-08 16:39:44 Z
-  dev-type: tun
-  dev: ovpn_tun1
-  client: 
-    Virtual Address: 10.179.239.10
-    Bytes Received: "2367820"
-    Bytes Sent: "2241883"
-    Connected Since: 2011-04-11 17:47:39 +00:00
-  remote: 
-  - address: 78.7.85.162
-    port: "1194"
-    proto: udp
-  comp-lzo: ""
-  virtual_address: 10.179.239.10</pre>  
 </div>
 
 <div class="slide">
