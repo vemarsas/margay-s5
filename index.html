@@ -4,11 +4,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title>Margay &mdash; Managing Network Security Appliances with Ruby and Sinatra</title>
 <!-- metadata -->
 <meta name="generator" content="S5" />
 <meta name="version" content="S5 1.1" />
-<meta name="presdate" content="20110511" />
+<meta name="presdate" content="20131009" />
 <meta name="author" content="Guido De Rosa" />
 <meta name="company" content="VEMAR s.a.s." />
 <!-- configuration parameters -->
@@ -62,8 +63,8 @@
 <div id="currentSlide"><!-- DO NOT EDIT --></div>
 <div id="header"></div>
 <div id="footer">
-<h1>London - May 11, 2011</h1>
-<h2>Margay &mdash; Managing Network Security Appliances with Ruby and Sinatra</h2>
+<h1>Napoli, Città della Scienza, <em>“Smart Education & Technology Days”</em> - 9, 10, 11 ottobre 2013</h1>
+<h2>Margay &mdash; Sicurezza (e Virtualizzazione) per la Scuola e oltre</h2>
 </div>
 
 </div>
@@ -72,13 +73,13 @@
 <div class="presentation">
 
 <div class="slide" id="slide0">
-  <h1>Managing Network Security Appliances with Ruby and Sinatra</h1>
-  <h2>
-    Introducing <em><a href="http://www.margay.it/">MARGAY</a></em>, a 
-    RESTful firewall, VPN router, AAA server and Content Filter
+  <h1>A Linux-based Network Security, Access Control and Virtualization Appliance</h1>
+  <h2>  
+    Introducing <a href="http://www.margay.it/">MARGAY</a>, a ReSTful firewall, VPN router, AAA server, Web Content Filter and Private Cloud Management System
   </h2>
 
-  <a href="http://ruby-lang.org/"><img src="img/ruby_logo.png" style="height:5em; float:right;"/></a>    
+  <img src="img/margay-alpha-240.png" style="float:right;"/>
+
   <h3>Guido De Rosa</h3>
 
   <h4>
@@ -95,6 +96,7 @@
     <li><a href="http://github.com/gderosa/onboard">http://github.com/gderosa/onboard</a></li>
     <li>And get it deployed on your own hardware...</li>
     <li>...with some sysadmin work ;)</li>
+    <li>We support <em>Acrosser</em>, <em>Jetway</em>, <em>HP</em>, ...</li>
   </ul>
 </div>
 
@@ -102,11 +104,11 @@
   <h1>Not-So-Embedded</h1>
   <img src="img/3acrosser.png" style="float:right; height:13em;"/>
   <ul>
-    <li>A standard x86 machine with GHz CPU and GiB RAM</li>
-    <li>Being more powerful than the avg SOHO device is easy, after all</li>
+    <li>A standard x86(_64) machine with GHz CPU and GiB+ RAM</li>
     <li>Can run DansGuardian + ClamAV (and afford content scanning)</li>
     <li>Can host a MySQL <em>server</em>, necessary for RADIUS AAA (something OpenWRT can not)</li>
-    <li>Still relatively Low-Power</li>
+    <li>Can run multiple QEMU/KVM virtual machines (in production: ERP, VoIP, Linux and Windows servers, etc.) (also with real hardware <em>passed-through</em>)</li>
+    <li>A Cluster of MARGAYs: distributed storage, private clouds, ... </li>
   </ul>
 </div>
 
@@ -151,13 +153,14 @@
 </div>
 
 <div class="slide">
-  <h1>Why Sinatra?</h1>
+  <h1>Why Sinatra (and Ruby)?</h1>
   <ul>
+    <img src="img/ruby_logo.png" style="float:right; height:4em;"></img>
     <li>Lightweight (duh!)</li>
     <li>RESTful in a natural way</li>
     <li>Why RESTful?</li>
     <li>Poor-man SNMP&hellip; ?</li>
-    <li>Each (human-readable) HTML page also provides JSON and YAML</li>
+    <li>Each (human-readable) HTML page also provides JSON (and Ruby objects, in development)</li>
     <li>Error messages are HTTP statuses (even in the UI)</li>
     <li>Sound URLs: <code>/network/interfaces/eth0.html</code></li>
   </ul>
@@ -196,32 +199,6 @@
           "port": "1194",
           "proto": "udp"
         }</pre>  
-</div>
-
-<div class="slide">
-  <h1 style="text-transform: none;">/network/openvpn.yaml</h1>
-<pre>    subject: 
-      C: IT
-      ST: NA
-      L: Napoli
-      O: Vemar sas
-      CN: napoli.vpn.vemarsas.it
-      emailAddress: guido.derosa@vemarsas.it
-    not_before: 2011-04-11 16:39:44 Z
-    not_after: 2021-04-08 16:39:44 Z
-  dev-type: tun
-  dev: ovpn_tun1
-  client: 
-    Virtual Address: 10.179.239.10
-    Bytes Received: "2367820"
-    Bytes Sent: "2241883"
-    Connected Since: 2011-04-11 17:47:39 +00:00
-  remote: 
-  - address: 78.7.85.162
-    port: "1194"
-    proto: udp
-  comp-lzo: ""
-  virtual_address: 10.179.239.10</pre>  
 </div>
 
 <div class="slide">
@@ -418,6 +395,37 @@
     <li>Compatible with <em>transparent</em> proxies (no Proxy-based Auth)</li>
     <li>C++ development on top of the SOCI library</li>
   </ul>
+</div>
+
+<div class="slide" style="text-align:center">
+  <h1>Virtualization: QEMU / KVM</h1>
+  <a href="img/screen/QEMU_Virtualization.overview.png" target="_blank"><img src="img/screen/QEMU_Virtualization.overview.png" style="height:16em"/></a>
+</div>
+
+<div class="slide">
+  <h1>Virtualization: Distributed storage: GlusterFS</h1>
+  <ul style="float:left;width:7%"><li>Build your own Cloud Infrastructure</li></ul>
+  <a href="img/screen/QEMU_Virtualization.GlusterFS.png" target="_blank"><img src="img/screen/QEMU_Virtualization.GlusterFS.png" style="width:70%;float:right"/></a>
+</div>
+
+<div class="slide">
+  <h1>Virtualization: USB Pass-through</h1>
+  <ul style="float:left;width:7%">
+    <li>Pass (real) hardware to Virtual Machines</li>
+    <li>Experimental support for USB&nbsp;3.0</li>
+  </ul>
+  <a href="img/screen/QEMU_Virtualization.USBPassthrough.png" target="_blank"><img src="img/screen/QEMU_Virtualization.USBPassthrough.png" style="width:70%;float:right"/></a>
+</div>
+
+<div class="slide">
+  <h1>Virtualization: PCI Pass-through</h1>
+  <ul style="float:left;width:35%">
+    <li>Pass (real) hardware to Virtual Machines</li>
+    <li>Requires VT&#8209;d/IOMMU support by CPU and mobo</li>
+    <li>MSI-enabled peripherials (almost any recent PCI/PCIe/PCI-X board)</li>
+    <li>Experimental support for Graphic cards</li>
+  </ul>
+  <a href="img/hardware-passed-through.jpg" target="_blank"><img src="img/hardware-passed-through.jpg" style="float:right"/></a>
 </div>
 
 <div class="slide">
@@ -666,7 +674,8 @@ OnBoard::Network::AccessControl::Chilli.save
   <ul>
     <li><a href="http://github.com/gderosa/onboard">http://github.com/gderosa/onboard</a> (and other projects)</li>
     <li><a href="http://dev.vemarsas.it/projects/onboard/wiki">http://dev.vemarsas.it/projects/onboard/wiki</a> (and other projects)</li>
-    <li><a href="http://www.margay.it/s5/">http://www.margay.it/s5/</a> (this presentation)</li>
+    <!-- <li><a href="http://www.margay.it/s5/">http://www.margay.it/s5/</a> (this presentation)</li> -->
+    <li><a href="http://www.margay.it/">http://www.margay.it/</a></li>
     <li>guido.derosa <em>at</em> vemarsas.it</li>
     <li>Thanks a lot!</li>
   </div>
