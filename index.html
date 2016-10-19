@@ -9,7 +9,7 @@
 <!-- metadata -->
 <meta name="generator" content="S5" />
 <meta name="version" content="S5 1.1" />
-<meta name="presdate" content="20131009" />
+<meta name="presdate" content="" />
 <meta name="author" content="Guido De Rosa" />
 <meta name="company" content="VEMAR s.a.s." />
 <!-- configuration parameters -->
@@ -49,9 +49,15 @@
   div.slide h1 {
     text-transform: none;
   }
+  div.slide#slide0 h1 {
+    font-size:170%;
+  }
   .slide ul li ul li {
     font-size:100%;
     margin-top: 0.75em;
+  }
+  div#footer {
+    height: 1.1em;
   }
 </style>
 
@@ -63,8 +69,7 @@
 <div id="currentSlide"><!-- DO NOT EDIT --></div>
 <div id="header"></div>
 <div id="footer">
-<h1>Napoli, Città della Scienza, <em>“Smart Education & Technology Days”</em> - 9, 10, 11 ottobre 2013</h1>
-<h2>Margay &mdash; Sicurezza (e Virtualizzazione) per la Scuola e oltre</h2>
+<!-- allow reuse for multiple events -->
 </div>
 
 </div>
@@ -103,7 +108,7 @@
 <div class="slide">
   <h1>Not-So-Embedded</h1>
   <img src="img/3acrosser.png" style="float:right; height:13em;"/>
-  <ul>
+  <ul style="font-size: 94%">
     <li>A standard x86(_64) machine with GHz CPU and GiB+ RAM</li>
     <li>Can run DansGuardian + ClamAV (and afford content scanning)</li>
     <li>Can host a MySQL <em>server</em>, necessary for RADIUS AAA (something OpenWRT can not)</li>
@@ -133,15 +138,17 @@
 </div>
 
 <div class="slide">
-  <h1>The trade fair ;)</h1>
+  <h1>Industry Events & Press</h1>
   <div style="text-align:right;">
-    <img src="img/ospark.jpg" style="height:11em;"/>
-    <img src="img/cebit11_logo_de_col.jpg" style="height:11em;"/>
-    <img src="img/cebit-stand-h.jpeg" style="height:11em;"/>
+    <img src="img/setd3gpls.jpg" style="height:7em"/>
+    <img src="img/ospark.jpg" style="width:7em"/>
+    <img src="img/cebit_logo.jpg" style="height: 4em"/>
+    <img src="img/cebit-stand-h.jpeg" style="height:11em"/>
   </div>
   <div>
     <small><a href="http://www.h-online.com/open/features/Open-Source-at-CeBIT-2011-1206993.html?page=3">http://www.h-online.com/open/features/Open-Source-at-CeBIT-2011-1206993.html?page=3</a></small>
   </div>
+  <div><img src="img/theH_logo.gif"/></div>
 </div>
 
 <div class="slide">
@@ -419,13 +426,13 @@
 
 <div class="slide">
   <h1>Virtualization: PCI Pass-through</h1>
-  <ul style="float:left;width:35%">
+  <ul style="float:left;width:27%;font-size:90%;margin-right:none">
     <li>Pass (real) hardware to Virtual Machines</li>
     <li>Requires VT&#8209;d/IOMMU support by CPU and mobo</li>
     <li>MSI-enabled peripherials (almost any recent PCI/PCIe/PCI-X board)</li>
     <li>Experimental support for Graphic cards</li>
   </ul>
-  <a href="img/hardware-passed-through.jpg" target="_blank"><img src="img/hardware-passed-through.jpg" style="float:right"/></a>
+  <a href="img/hardware-passed-through.jpg" target="_blank"><img src="img/hardware-passed-through.jpg" style="float:right; width:55%"/></a>
 </div>
 
 <div class="slide">
@@ -672,11 +679,9 @@ OnBoard::Network::AccessControl::Chilli.save
 <div class="slide">
   <h1>Fork me on GitHub</h1>
   <ul>
-    <li><a href="http://github.com/gderosa/onboard">http://github.com/gderosa/onboard</a> (and other projects)</li>
-    <li><a href="http://dev.vemarsas.it/projects/onboard/wiki">http://dev.vemarsas.it/projects/onboard/wiki</a> (and other projects)</li>
-    <!-- <li><a href="http://www.margay.it/s5/">http://www.margay.it/s5/</a> (this presentation)</li> -->
+    <li><a href="http://github.com/vemarsas/onboard">http://github.com/vemarsas/onboard</a> (and other projects)</li>
     <li><a href="http://www.margay.it/">http://www.margay.it/</a></li>
-    <li>guido.derosa <em>at</em> vemarsas.it</li>
+    <li>guido.derosa|antonello.ventre <em>at</em> vemarsas.it</li>
     <li>Thanks a lot!</li>
   </div>
 </div>
